@@ -16,7 +16,7 @@ const movies =
 
 function App() {
 
-/* const [films,setFilms] = useState(movies) */
+const [films,setFilms] = useState(movies) 
 
 
   return (
@@ -26,14 +26,11 @@ function App() {
         <div className='col'>
          <label htmlFor="genre">Choose the genre:</label>
          <select name="filmGenre" id="filmGenre">
-          <option value="Fantascenza">Fantascenza</option>
-          <option value="Thriller">Thriller</option>
-          <option value="Romantico">Romantico</option>
-          <option value="Azione">Azione</option>
+         {movies.map(movie =>(
+          <option value="Fantascenza">{movie.genre}</option>
+        ))}
          </select>
-         {movies.filter(movie=>movie.genre(
-           <p>film del genere scelto:{movie.title}</p>        
-         ))}
+          <p>categoria film selezionato </p>
         </div>
       </div>
     </div>
