@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 
-
-
 const movies =
  [
    { title: 'Inception', genre: 'Fantascienza' },
@@ -15,22 +13,36 @@ const movies =
 
 
 function App() {
+  
+  const [genre, setGenre]=useState("") 
 
-const [films,setFilms] = useState(movies) 
+
+  
+  useEffect(() => {
+    /* console.log(genre); */
+    
+      
+  
+    
+    
+  }, [genre]); 
+
 
 
   return (
     <>
+    
     <div className='container'>
       <div className='row'>
         <div className='col'>
          <label htmlFor="genre">Choose the genre:</label>
-         <select name="filmGenre" id="filmGenre">
+         <select name="filmGenre" value={genre} onChange={(e)=>setGenre(e.target.value)}>
+          <option value="">tutti i film</option>
          {movies.map(movie =>(
-          <option value="Fantascenza">{movie.genre}</option>
+          <option value={movie.genre}>{movie.genre}</option>
         ))}
          </select>
-          <p>categoria film selezionato </p>
+          <p>Film di categoria selezionato:{} </p>
         </div>
       </div>
     </div>
