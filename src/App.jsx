@@ -15,27 +15,30 @@ const movies =
 function App() {
   
   const [genre, setGenre]=useState("") 
-  const [film,setFilm]=useState(movies)
+  const [list,setList]=useState(movies)
 
   
   useEffect(() => {
-    /* console.log(genre); */
-    /* if(genre== movies.filter(titolo=>(
-      
-      
-    ))){
-    } */
+    if(genre){
 
-    
+
+  const listaFiltrata = movies.filter(movie =>{
+    return movie.genre == genre
+  })
+
+  setList(listaFiltrata)
+  } else
+    {
+      setList(movies)
+    }
   }, [genre]); 
-  /* console.log(titoloFiltrato); */
+
   
 
 
 
-  return (
+return (
     <>
-    
     <div className='container'>
       <div className='row'>
         <div className='col'>
@@ -46,7 +49,11 @@ function App() {
           <option key={genre} value={genre}>{genre}</option>
           ))}
          </select>
-          <p>Film di categoria selezionato:{} </p>
+          <ul>
+            {list.map(movie=>(
+              <li>{movie.title}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
