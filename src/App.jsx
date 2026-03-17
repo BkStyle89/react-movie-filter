@@ -15,17 +15,21 @@ const movies =
 function App() {
   
   const [genre, setGenre]=useState("") 
-
+  const [film,setFilm]=useState(movies)
 
   
   useEffect(() => {
     /* console.log(genre); */
-    
+    /* if(genre== movies.filter(titolo=>(
       
-  
-    
+      
+    ))){
+    } */
+
     
   }, [genre]); 
+  /* console.log(titoloFiltrato); */
+  
 
 
 
@@ -38,9 +42,9 @@ function App() {
          <label htmlFor="genre">Choose the genre:</label>
          <select name="filmGenre" value={genre} onChange={(e)=>setGenre(e.target.value)}>
           <option value="">tutti i film</option>
-         {movies.map(movie =>(
-          <option value={movie.genre}>{movie.genre}</option>
-        ))}
+          {[...new Set(movies.map(movie => movie.genre))].map(genre => (
+          <option key={genre} value={genre}>{genre}</option>
+          ))}
          </select>
           <p>Film di categoria selezionato:{} </p>
         </div>
